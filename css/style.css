@@ -1,5 +1,7 @@
 body {
-    background-color: #b399d4;
+    /*background-color: #b399d4;*/
+    background-color: #9c9c9c;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 div#container-shell{
@@ -22,6 +24,7 @@ div#top-shell{
     padding: 2px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -75,3 +78,23 @@ li.green-color{
     background-color: #4AF626;
 }
 
+div#command{
+    display: flex;
+    flex-direction: row;
+}
+
+div#command::before{
+    color: #4af626;
+    content: "guest@wellcome:~$";
+    height: fit-content;
+}
+
+textarea#input{
+    resize: none;
+    left: -1000;
+    position: absolute;
+}
+
+#typer{
+    color: #4af626;
+}

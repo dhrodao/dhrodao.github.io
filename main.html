@@ -1,6 +1,10 @@
 <html>
     <head>
         <title>A Shell Website</title>
+        
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -13,38 +17,28 @@
                     <li class="yellow-color"></li>
                     <li class="green-color"></li>
                 </ul>
-
-                <p style="padding: 0; margin: 0; height: fit-content;">Terminal</p>
+                <h3 style="padding: 0; margin: 0; height: fit-content;">Terminal</h3>
+                <span id="spacer"></span>
             </div>
             <div id="screen-shell">
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
-                <p>DDDDDD</p>
+                <div id="terminal">
+                    
+                </div>
+                <textarea name="input" id="input" 
+                onkeydown="" onkeyup="typeIt(this, event)"></textarea>
+                <div id="command" onclick="focusInput()">
+                    <span id="typer"></span>
+                    <b class="cursor"></b>
+                </div>
             </div>
         </div>
     </body>
+    <script>
+        /* Set the span element width on the tob wndow bar 
+         * the same as the button container list
+         */
+        const buttonUlWidth = document.getElementById("button-ul").offsetWidth
+        document.getElementById("spacer").style.width = buttonUlWidth
+    </script>
+    <script src="js/main.js"></script>
 </html>
