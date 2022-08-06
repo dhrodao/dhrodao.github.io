@@ -43,6 +43,9 @@ function main(){
     textarea.value = ""
     command.innerHTML = textarea.value
 
+    // Display welcome messaje
+    putLines(banner, "bold", 50)
+
     focusInput()
 }
 
