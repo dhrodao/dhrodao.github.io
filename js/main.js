@@ -1,8 +1,6 @@
 window.addEventListener("keyup", inputKey)
 
 function inputKey(key){
-    console.log("Key: ", key.keyCode)
-
     if (key.keyCode == 181) {
         document.location.reload(true);
     }

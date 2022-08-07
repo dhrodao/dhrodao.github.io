@@ -19,10 +19,17 @@ function executeCommand(cmd){
 
     switch(cmd.toLowerCase()){
         case 'help':
-            putLines(help, helpStyle, 500)
+            putLines(help, helpStyle, 200)
             break
         case 'whoami':
-            putLines(whoami, whoamiStyle, 500)
+            putLines(whoami, whoamiStyle, 200)
+            break
+        case 'socials':
+            putLines(socials, socialsStyle, 200)
+            break
+        case 'projects':
+            putLines(projects, projectsStyle, 200)
+            newTab(github, 2500)
             break
         case 'clear':
             terminal.innerHTML = ""
@@ -49,11 +56,12 @@ function typeIt(element, event){
 /* Funciones */
 function putLine(line, textStyle, time){
     var text = ""
-
+// <span 
     for(var i = 0; i < line.length; i++){
-        if(line.charAt(i) === " " && line.charAt(i + 1) === " "){
-            console.log(line)
-            text += "&nbsp;&nbsp;"
+        if(line.charAt(i) === " "){            
+            if(!["span", "link", "ink\"", "  <a"].includes(line.substring(i-4, i)))
+                text += "&nbsp;"
+            else text += line.charAt(i)
         }else{
             text += line.charAt(i)
         }
@@ -92,6 +100,10 @@ function arrowActions(event){
     if(event.keyCode === 39 && curr < 0){ // Right
         cursor.style.left = (curr + pixelsToMove) + "px"
     }
+}
 
-
+function newTab(url, time){
+    setTimeout(function() {
+        window.open(url, "_blank").focus()
+    }, time)
 }
