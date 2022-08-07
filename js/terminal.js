@@ -59,7 +59,7 @@ function putLine(line, textStyle, time){
 // <span 
     for(var i = 0; i < line.length; i++){
         if(line.charAt(i) === " "){            
-            if(!["span", "link", "ink\"", "  <a"].includes(line.substring(i-4, i)))
+            if(!["span", "link", "ink\"", "  <a", "dao\"", "ao/\""].includes(line.substring(i-4, i)))
                 text += "&nbsp;"
             else text += line.charAt(i)
         }else{

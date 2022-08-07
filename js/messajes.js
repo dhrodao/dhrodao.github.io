@@ -36,8 +36,8 @@ const whoami = [
 const socials = [
     '<br>',
     `     email            <a class="link" href="mailto:${email.replace("(at)", "@")}">${email}</a>`,
-    `     github           <a class="link" href="${github}">github/dhrodao</a>`,
-    `     linkedin         <a class="link" href="${linkedin}">linkedin/danielhervasrodao</a>`,
+    `     github           <a class="link" href="${github}" target="_blank">github/dhrodao</a>`,
+    `     linkedin         <a class="link" href="${linkedin}" target="_blank"">linkedin/danielhervasrodao</a>`,
     '<br>',
 ]
 
