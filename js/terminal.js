@@ -1,33 +1,58 @@
-/* Mensajes predefinidos */
-var welcomeMsg = `
-              .:'
-          __ :'__            _ _                   _
-       .'\`__\`-'__\`\`.        | | |                 | |
-      :__________.-'      __| | |__  _ __ ___   __| | __ _  ___   
-      :_________:        /  \` | '_ \\| '__/ _ \\ / _\` |/ _\` |/ _ \\
-       :_________\`-;    | (_| | | | | | | (_) | (_| | (_| | (_) | 
-        \`.__.-.__.'      \\__,_|_| |_|_|  \\___/ \\__,_|\\__,_|\\___/                 
-`
+/* Constantes */
+const prompt = "guest@welcome:~$ "
+const textarea = document.getElementById("input")
+const command = document.getElementById("typer")
+const cursor = document.getElementById("cursor")
 
-const banner = [
-    '            .:',
-    '         __:\'__            _ _             _',
-    '       .\'`__`-\'__``..         | | |             | |',
-    '       :_______.-\'       __| | |__ __ ___  __| | ___  ___',
-    '       :_______:       /  ` | \'_ | \'__|/ _ \\ / _\` |/ _\` |/ _ \\',
-    '       :_______\`-;     | (_| | | | | |  | (_) | (_| | (_| | (_) |',
-    '        \`.__.-.__.\'      \\__,_|_| |_|_|  \\___/ \\__,_|\\__,_|\\____/'
-]
+const terminalScreen = document.getElementById("screen-shell")
+const terminal = document.getElementById("terminal")
+const typer = document.getElementById("typer")
+const before = document.getElementById("before")
 
-/* Elementos */
-const terminalScreen = document.getElementById("terminal")
+function initCursor(){
+    cursor.style.left = "0px"
+}
+
+function executeCommand(cmd){
+    if(cmd.toLowerCase() != 'clear')
+        putLine(prompt + cmd, [], 0)
+
+    switch(cmd.toLowerCase()){
+        case 'help':
+            putLines(help, helpStyle, 500)
+            break
+        case 'whoami':
+            putLines(whoami, whoamiStyle, 500)
+            break
+        case 'clear':
+            terminal.innerHTML = ""
+            putLines(banner, bannerStyle, 80)
+            break
+        default:
+            const errorMsg = [`Command: <span class="command">'${cmd}'</span> not found`]
+            putLines(errorMsg, [''], 250)
+            break
+    }
+
+    textarea.value = ""
+    command.innerHTML = textarea.value
+}
+
+function typeIt(element, event){
+    const text = element.value
+    .replaceAll(" ", "&nbsp;")
+    .replace(/\n/g, '')
+    
+    typer.innerHTML = text
+}
 
 /* Funciones */
 function putLine(line, textStyle, time){
     var text = ""
 
     for(var i = 0; i < line.length; i++){
-        if(line.charAt(i) == " " && line.charAt(i + 1)){
+        if(line.charAt(i) === " " && line.charAt(i + 1) === " "){
+            console.log(line)
             text += "&nbsp;&nbsp;"
         }else{
             text += line.charAt(i)
@@ -39,14 +64,34 @@ function putLine(line, textStyle, time){
         newLine.innerHTML = text
         newLine.className = textStyle
 
-        terminalScreen.append(newLine)
+        terminal.append(newLine)
+        //before.parentNode.insertBefore(newLine, before);
+
+        terminalScreen.scrollTo(0, terminalScreen.offsetHeight)
     }, time)
 }
 
 function putLines(lines, textStyle, time){
-    lines.forEach(function(line, index) {
-        console.log(line, index)
-        putLine(line, textStyle, time * index)
-    });
+    if(lines.length === textStyle.length){
+        lines.forEach(function(line, index) {
+            console.log(line, index)
+            putLine(line, textStyle[index], time * index)
+        });
+    }
 }
 
+function arrowActions(event){
+    const curr = parseInt(cursor.style.left.replace("px", ""))
+    const pixelsToMove = 9 // 8px each letter
+    const maxPx = textarea.value.length * pixelsToMove
+    console.log("Key: " + event.key)
+    /* Move the cursor over the text */
+    if(event.keyCode === 37 && Math.abs(curr) < maxPx){ // Left
+        cursor.style.left = (curr - pixelsToMove) + "px"
+    }
+    if(event.keyCode === 39 && curr < 0){ // Right
+        cursor.style.left = (curr + pixelsToMove) + "px"
+    }
+
+
+}

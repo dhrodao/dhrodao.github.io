@@ -24,8 +24,11 @@
                 <div id="terminal">
                     
                 </div>
+                <a id="before"></a>
                 <textarea name="input" id="input" 
-                onkeydown="typeIt(this, event)"></textarea>
+                onkeydown="typeIt(this, event)"
+                onkeyup="typeIt(this, event);arrowActions(event)"
+                onkeypress="typeIt(this, event)"></textarea>
                 <div id="command" onclick="focusInput()"
                 autofocus>
                     <span id="typer"></span>
@@ -41,6 +44,7 @@
         const buttonUlWidth = document.getElementById("button-ul").offsetWidth
         document.getElementById("spacer").style.width = buttonUlWidth
     </script>
+    <script src="js/messajes.js"></script>
     <script src="js/terminal.js"></script>
     <script src="js/main.js"></script>
 </html>

@@ -1,7 +1,9 @@
 body {
     /*background-color: #b399d4;*/
     background-color: #9c9c9c;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    /*font-family: -apple-system, BlinkMacSystemFont, sans-serif;*/
+    font-family: cursor, monospace;
+    overflow: hidden;
 }
 
 #terminal{
@@ -9,6 +11,7 @@ body {
 }
 
 div#container-shell{
+    overflow: hidden;
     margin: auto;
     width: 60%;
     border-radius: 5px;
@@ -51,6 +54,7 @@ div#screen-shell p {
     margin: 0;
     height: fit-content;
     color: #4af626;
+    overflow: hidden;
 }
 
 ul#button-ul{
@@ -85,11 +89,12 @@ li.green-color{
 div#command{
     display: flex;
     flex-direction: row;
+    cursor: text;
 }
 
 div#command::before{
     color: #4af626;
-    content: "guest@wellcome:~$";
+    content: "guest@welcome:~$";
     height: fit-content;
     margin-right: 4px;
 }
@@ -114,12 +119,13 @@ b{
     opacity: 100%;
     height: 1.3em;
     position: relative;
-    transform: translateY(-2.5px);
+    transform: translateY(-2px);
     width: 10px;
     max-width: 10px;
     overflow: hidden;
     display: inline-block;
     animation: blinker 1.5s linear infinite;
+    left: 0;
 }
 
 @keyframes blinker {
@@ -130,4 +136,26 @@ b{
 
 .bold {
     font-weight: bold;
+    text-shadow: 0 0 6px #4af626;
+}
+
+::selection{
+    background-color: #4af626;
+    color: black;
+}
+
+.command{
+    text-shadow: 0 0 6px #4af626;
+}
+
+p{
+    animation: typing 0.5s steps(30, end)
+    
+    
+    ;
+}
+
+@keyframes typing {
+    from {width: 0;}
+    to{width: 100%;}
 }
