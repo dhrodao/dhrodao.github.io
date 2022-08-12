@@ -4,6 +4,7 @@ body {
     /*font-family: -apple-system, BlinkMacSystemFont, sans-serif;*/
     font-family: cursor, monospace;
     overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 #terminal{
@@ -148,10 +149,6 @@ b{
     text-shadow: 0 0 6px #4af626;
 }
 
-p{
-    animation: typing 0.5s steps(30, end)
-}
-
 @keyframes typing {
     from {width: 0;}
     to{width: 100%;}
@@ -160,4 +157,18 @@ p{
 a{
     color: #4af626;
     text-shadow: 0 0 6px #4af626;
+}
+
+@media only screen and (max-width: 1200px) {
+    p {
+      animation: none;
+      overflow-wrap: break-word;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    p{
+        animation: typing 0.5s steps(30, end);
+        overflow-wrap: normal;
+    }
 }
