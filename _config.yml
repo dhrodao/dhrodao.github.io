@@ -1,0 +1,10 @@
+# Site settings
+title: dhrodao - Personal Portfolio
+description: Personal portfolio website showcasing work experience and projects
+url: ""
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+exclude:
+  - README.md
